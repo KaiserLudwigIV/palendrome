@@ -8,6 +8,7 @@
 body {
 	background-color: rgb(17, 17, 17);
 	color: white;
+	overflow-x: hidden;
 }
 .container {
 	display: flex;
@@ -18,9 +19,57 @@ body {
 	width: 100%;
 	text-align: center;
 }
-input {
+#palInput {
 	width: min(50rem, 90%);
 	height: 3rem;
 	padding-inline: 0.5rem;
 	font-size: 1.4rem;
+}
+.navbar {
+	width: 100vw;
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 1rem 3rem;
+	background-color: rgb(59, 59, 59);
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.link {
+	color: white;
+	text-decoration: none;
+	transition: 0.2s;
+	font-size: 1.3rem;
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+p {
+	color: white;
+}
+.kanyequote {
+	max-width: 60ch;
+	margin: 0.6rem;
+}
+.kanyevote {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: row;
+	gap: 2rem;
+	background-color: rgb(27, 27, 27);
+	padding: 0 2rem;
+	& > button {
+		padding: 0.2rem 1rem;
+		border: 3px solid #fff;
+		border-radius: 5px;
+		color: #000;
+		&:active {
+			transform: scale(0.9);
+		}
+	}
 }

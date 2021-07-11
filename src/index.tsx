@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { App } from "./App";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Palendrome } from "./Palendrome";
+import { Navbar } from "./Navbar";
+import { Home } from "./Home";
+import { Kanye } from "./Kanye";
 
 const Index = () => {
 	return (
@@ -12,7 +16,22 @@ const Index = () => {
 				height: "100vh",
 			}}
 		>
-			<App />
+			<Router>
+				<Navbar />
+				<Switch>
+					<Route path="/Palendrome">
+						<Palendrome />
+					</Route>
+
+					<Route path="/Kanye">
+						<Kanye />
+					</Route>
+
+					<Route path="/">
+						<Home />
+					</Route>
+				</Switch>
+			</Router>
 		</div>
 	);
 };
