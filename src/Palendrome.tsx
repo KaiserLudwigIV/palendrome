@@ -20,7 +20,7 @@ const Palendrome = (props: Props) => {
 				palendrome!
 			</p>
 			<input
-				id="palInput"
+				className="palInput"
 				type="text"
 				onChange={(e) => testPal(e.target.value)}
 			/>
