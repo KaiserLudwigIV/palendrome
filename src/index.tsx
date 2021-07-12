@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	HashRouter,
+} from "react-router-dom";
 import { Palendrome } from "./Palendrome";
 import { Navbar } from "./Navbar";
 import { Home } from "./Home";
@@ -16,7 +21,7 @@ const Index = () => {
 				height: "100vh",
 			}}
 		>
-			<Router>
+			<HashRouter>
 				<Navbar />
 				<Switch>
 					<Route path="/Palendrome">
@@ -31,7 +36,7 @@ const Index = () => {
 						<Home />
 					</Route>
 				</Switch>
-			</Router>
+			</HashRouter>
 		</div>
 	);
 };

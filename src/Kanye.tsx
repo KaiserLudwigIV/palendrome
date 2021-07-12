@@ -40,7 +40,7 @@ const Kanye = (props: Props) => {
 	const kanyes = allKanye.filter(({ quote }) =>
 		quote
 			.toLowerCase()
-			.replace(/[^a-z]\s/, "")
+			.replace(/[^A-z^\s]/, "")
 			.includes(lcFilter)
 	);
 
@@ -61,6 +61,10 @@ const Kanye = (props: Props) => {
 				value={filter}
 				onChange={(e) => setfilter(e.target.value)}
 			/>
+			{kanyes.length == 0 && (
+				<p style={{ marginTop: "-1.3rem" }}>No matching quotes found. 😴</p>
+			)}
+
 			{kanyes.map((e, ind) => (
 				<KanyesTweet
 					rank={e.rank}
