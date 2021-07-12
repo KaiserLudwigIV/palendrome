@@ -40,7 +40,7 @@ const Kanye = (props: Props) => {
 	const kanyes = allKanye.filter(({ quote }) =>
 		quote
 			.toLowerCase()
-			.replace(/[^a-z]/, "")
+			.replace(/[^a-z]\s/, "")
 			.includes(lcFilter)
 	);
 
