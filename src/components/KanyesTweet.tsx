@@ -27,12 +27,17 @@ const KanyesTweet = (props: Props) => {
 				<button
 					onClick={() => {
 						const cpyArr = [...props.allKanye];
-						cpyArr[props.rank] = {
-							quote: props.quote,
-							votes: props.votes + 1,
-							rank: props.rank,
-						};
-						props.kanyeHook(cpyArr);
+						cpyArr[props.rank].votes += 1;
+						const finalArr = cpyArr
+							.sort(function (a: KanyeWVotes, b: KanyeWVotes) {
+								return b.votes - a.votes;
+							})
+							.map((e: KanyeWVotes, ind: number) => ({
+								quote: e.quote,
+								votes: e.votes,
+								rank: ind,
+							}));
+						props.kanyeHook(finalArr);
 					}}
 				>
 					Vote!
