@@ -21,7 +21,7 @@ const KanyesTweet = (props: Props) => {
 	});
 	return (
 		<div className="kanyevote">
-			<h3>{props.rank + 1}#</h3>
+			<h3 style={{ fontSize: "1.4rem" }}>{props.rank + 1}#</h3>
 			<p className="kanyequote">{props.quote}</p>
 			<div>
 				<button
@@ -42,7 +42,7 @@ const KanyesTweet = (props: Props) => {
 				>
 					Vote!
 				</button>
-				<h3>{props.votes}</h3>
+				<h3 style={{ fontSize: "1.4rem" }}>{props.votes}</h3>
 			</div>
 		</div>
 	);

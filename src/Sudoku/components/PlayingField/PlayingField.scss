@@ -1,0 +1,35 @@
+#PlayingField {
+	$dimension: min(min(90vh, 95vw), 50rem);
+	$gap-between: 0.4rem;
+	width: $dimension;
+	height: $dimension;
+	background-color: #404040;
+	display: grid;
+	gap: $gap-between;
+	padding: $gap-between;
+	& > div {
+		background-color: black;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(3, 1fr);
+		& > div {
+			background-color: rgb(187, 116, 116);
+			border: 2px solid #404040;
+		}
+	}
+}
+.gameInput {
+	display: block;
+	font-size: 1.4rem;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: 3px solid black;
+	&:focus {
+		background-color: turquoise !important;
+		outline: none;
+		pointer-events: none;
+		caret-color: transparent;
+	}
+}

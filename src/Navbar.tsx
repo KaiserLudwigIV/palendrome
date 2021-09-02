@@ -17,6 +17,9 @@ const Navbar = (props: Props) => {
 			<Link to="/Kanye" className="link">
 				Kanye
 			</Link>
+			<Link to="/Sudoku" className="link">
+				Sudoku
+			</Link>
 		</div>
 	);
 };

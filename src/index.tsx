@@ -10,6 +10,7 @@ import { Palendrome } from "./Palendrome";
 import { Navbar } from "./Navbar";
 import { Home } from "./Home";
 import { Kanye } from "./Kanye";
+import { SudokuApp } from "./Sudoku/SudokuApp";
 
 const Index = () => {
 	return (
@@ -24,6 +25,9 @@ const Index = () => {
 			<HashRouter>
 				<Navbar />
 				<Switch>
+					<Route path="/Sudoku">
+						<SudokuApp />
+					</Route>
 					<Route path="/Palendrome">
 						<Palendrome />
 					</Route>
