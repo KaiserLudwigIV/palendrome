@@ -26,10 +26,14 @@
 	height: 100%;
 	background-color: transparent;
 	border: 3px solid black;
+	cursor: default;
 	&:focus {
 		background-color: turquoise !important;
 		outline: none;
 		pointer-events: none;
 		caret-color: transparent;
+	}
+	&:hover {
+		cursor: default;
 	}
 }

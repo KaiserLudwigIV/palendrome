@@ -1,30 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 interface Props {
 	inputValue: number | undefined;
 }
 
 const Field = (props: Props) => {
+	const thisInput = useRef(null);
 	const [value, setValue] = useState<number | undefined>(props.inputValue);
-
-	const checkNumber = (evt: string) => {
-		const regex = /\b[1-9]\b/;
-		if (evt[1] == undefined) {
-			if (regex.test(evt)) {
-				setValue(parseInt(evt));
-			}
-		} else if (regex.test(evt[1])) {
-			setValue(parseInt(evt[1]));
-		}
-	};
+	useEffect(() => {
+		//@ts-ignore
+		thisInput.current.focus();
+	}, [value]);
 
 	return (
 		<input
+			ref={thisInput}
 			key={Math.random() * 1000}
 			className="gameInput"
 			value={value}
-			onChange={(evt) => checkNumber(evt.currentTarget.value)}
-			onInput={(evt) => checkNumber(evt.currentTarget.value)}
+			onKeyPress={(evt) => {
+				if (!/[1-9]/.test(evt.key)) {
+					evt.preventDefault();
+				} else {
+					setValue(parseInt(evt.key));
+				}
+			}}
 			onFocus={(evt) => {
 				let value = evt.currentTarget.value;
 				evt.currentTarget.value = "";
