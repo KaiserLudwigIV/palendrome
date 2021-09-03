@@ -19,7 +19,7 @@ const Field = (props: Props) => {
 			className="gameInput"
 			value={value}
 			onKeyPress={(evt) => {
-				if (!/[1-9]/.test(evt.key)) {
+				if (!/[1-9]/.test(evt.key) || props.inputValue !== undefined) {
 					evt.preventDefault();
 				} else {
 					setValue(parseInt(evt.key));
@@ -30,7 +30,6 @@ const Field = (props: Props) => {
 				evt.currentTarget.value = "";
 				evt.currentTarget.value = value;
 			}}
-			readOnly={props.inputValue != undefined}
 			style={{
 				backgroundColor:
 					props.inputValue != undefined
