@@ -11,6 +11,10 @@ const Field = (props: Props) => {
 		//@ts-ignore
 		thisInput.current.focus();
 	}, [value]);
+	useEffect(() => {
+		//@ts-ignore
+		thisInput.current.blur();
+	}, []);
 
 	return (
 		<input
