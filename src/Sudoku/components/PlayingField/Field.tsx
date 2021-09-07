@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
+import { gameCopy } from "../PlayingField/PlayingField";
 
 interface Props {
 	inputValue: number | undefined;
+	fIndex: number;
+	sIndex: number;
 }
 
 const Field = (props: Props) => {
@@ -14,6 +17,9 @@ const Field = (props: Props) => {
 	useEffect(() => {
 		//@ts-ignore
 		thisInput.current.blur();
+		if (value === undefined) {
+			gameCopy[props.fIndex][props.sIndex].value = undefined;
+		}
 	}, []);
 
 	return (
@@ -22,11 +28,13 @@ const Field = (props: Props) => {
 			key={Math.random() * 1000}
 			className="gameInput"
 			value={value}
+			onChange={() => true}
 			onKeyPress={(evt) => {
 				if (!/[1-9]/.test(evt.key) || props.inputValue !== undefined) {
 					evt.preventDefault();
 				} else {
 					setValue(parseInt(evt.key));
+					gameCopy[props.fIndex][props.sIndex].value = parseInt(evt.key);
 				}
 			}}
 			onFocus={(evt) => {

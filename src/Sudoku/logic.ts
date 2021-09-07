@@ -110,3 +110,52 @@ const createNumber = (
 	}
 	return resultValue;
 };
+
+export const testIfLegit = (
+	gameToTest: sudokuField[][],
+	size: number
+): boolean => {
+	const sizeSquared = size ** 2;
+
+	const flattedGameValues = gameToTest.flat(2).map((e) => e.value);
+
+	if (flattedGameValues.includes(undefined)) {
+		return false;
+	}
+
+	// Test the Boxes
+	for (let i = 0; i < gameToTest.length; i++) {
+		const works: boolean = new Set(gameToTest[i]).size === gameToTest[i].length;
+		if (!works) {
+			return false;
+		}
+	}
+
+	// Test the Rows
+	for (let i = 0; i < sizeSquared; i++) {
+		const toTest: (number | undefined)[] = flattedGameValues.slice(
+			i * sizeSquared,
+			i * sizeSquared + sizeSquared
+		);
+		const works: boolean = new Set(toTest).size === toTest.length;
+		if (!works) {
+			return false;
+		}
+	}
+
+	// Test for Colummmmmmmmmmmmmmns help mmmmmmmmmmmmy "mmmmmmmmm" key is stuck
+	for (let i = 0; i < sizeSquared; i++) {
+		let toTest: (number | undefined)[] = [];
+
+		for (let k = 0; k < sizeSquared; k++) {
+			const ind = i + k * sizeSquared;
+			toTest[k] = flattedGameValues[ind];
+		}
+
+		const works: boolean = new Set(toTest).size === toTest.length;
+		if (!works) {
+			return false;
+		}
+	}
+	return true;
+};

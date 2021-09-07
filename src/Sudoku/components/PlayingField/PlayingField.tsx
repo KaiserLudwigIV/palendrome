@@ -8,11 +8,14 @@ interface Props {
 	settings: SettingsI;
 }
 
+export let gameCopy: sudokuField[][];
+
 const PlayingField = (props: Props) => {
 	const game: sudokuField[][] = getGame(
 		props.settings.size,
 		props.settings.difficulty
 	);
+	gameCopy = [...game];
 	return (
 		<section
 			id="PlayingField"
@@ -24,6 +27,7 @@ const PlayingField = (props: Props) => {
 			{game.map((evt, ind) => (
 				<Section
 					key={ind}
+					fIndex={ind}
 					size={props.settings.size}
 					fields={evt}
 					difficulty={props.settings.difficulty}

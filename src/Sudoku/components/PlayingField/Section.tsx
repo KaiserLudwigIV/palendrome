@@ -6,6 +6,7 @@ interface Props {
 	size: number;
 	fields: sudokuField[];
 	difficulty: number;
+	fIndex: number;
 }
 
 const Section = (props: Props) => {
@@ -19,6 +20,8 @@ const Section = (props: Props) => {
 			{props.fields.map((e: sudokuField, ind: number) => (
 				<Field
 					key={Math.random() * 1000}
+					fIndex={props.fIndex}
+					sIndex={ind}
 					inputValue={
 						Math.random() > props.difficulty ** 1.7 * 0.1 ? e.value : undefined
 					}

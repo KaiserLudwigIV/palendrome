@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { SettingsI } from "../../logic";
+import { SettingsI, testIfLegit } from "../../logic";
 import "./Settings.scss";
+import { gameCopy } from "../PlayingField/PlayingField";
 
 interface Props {
 	setSettings: React.Dispatch<React.SetStateAction<SettingsI>>;
@@ -9,9 +10,20 @@ interface Props {
 const Settings = (props: Props) => {
 	const [gameSize, setGameSize] = useState<2 | 3>(3);
 	const [difficulty, setDifficulty] = useState<1 | 2 | 3>(2);
+	const [isSudokuSolved, setIsSudokuSolved] = useState<boolean | undefined>(
+		undefined
+	);
+
 	return (
 		<section id="Settings">
 			<div className="SettingOption">
+				<h1>
+					{isSudokuSolved === undefined
+						? "Not yet solved"
+						: isSudokuSolved === true
+						? "Sudoku solved!"
+						: "Sudoku not solved!"}{" "}
+				</h1>
 				<h2>Set the game size</h2>
 				<div id="GameSize">
 					<h2
@@ -60,14 +72,22 @@ const Settings = (props: Props) => {
 			</div>
 			<div className="SettingOption">
 				<button
-					onClick={() =>
+					onClick={() => {
 						props.setSettings({
 							size: gameSize,
 							difficulty: difficulty,
-						})
-					}
+						});
+						setIsSudokuSolved(undefined);
+					}}
 				>
 					Start Game
+				</button>
+			</div>
+			<div className="SettingOption">
+				<button
+					onClick={() => setIsSudokuSolved(testIfLegit(gameCopy, gameSize))}
+				>
+					Test if works
 				</button>
 			</div>
 		</section>
