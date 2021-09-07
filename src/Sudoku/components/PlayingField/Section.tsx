@@ -1,5 +1,5 @@
 import React from "react";
-import { sudokuField } from "~/../logic";
+import { sudokuField } from "../../logic";
 import { Field } from "./Field";
 
 interface Props {

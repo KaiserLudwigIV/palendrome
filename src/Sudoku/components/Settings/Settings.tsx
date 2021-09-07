@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SettingsI } from "~/../logic";
+import { SettingsI } from "../../logic";
 import "./Settings.scss";
 
 interface Props {
